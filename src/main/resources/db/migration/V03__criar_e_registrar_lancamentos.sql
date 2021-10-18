@@ -25,7 +25,7 @@ INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, obser
 INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa)
 			VALUES ('Clube', '2021-03-19', null, 100.00, null, 'DESPESA', 3, 4);
 INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa)
-			VALUES ('Mesada', '2021-06-01', '2021-06-01', 500.00, null, 'RECEITA', 5, 6);
+			VALUES ('Mesada', '2021-06-01', '2021-06-01', 500.00, null, 'RECEITA', 5, 2);
 INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa)
 			VALUES ('Vendas', '2021-06-17', '2021-06-15', 3000.00, null, 'RECEITA', 4, 2);
 INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa)
