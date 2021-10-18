@@ -1,4 +1,4 @@
-CREATE TABLE lancamento (
+CREATE TABLE IF NOT EXISTS lancamento (
 	codigo BIGINT (20) PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR (200) NOT NULL,
     data_vencimento DATE NOT NULL,
