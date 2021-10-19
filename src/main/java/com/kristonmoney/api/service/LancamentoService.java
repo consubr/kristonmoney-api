@@ -25,25 +25,39 @@ public class LancamentoService {
 	private PessoaRepository pessoaRepository;
 	
 	
+	
 	public Lancamento alterarLancamento(Long codigo, Lancamento lancamento) {
 		Lancamento lancamentoEncontrado = buscarLancamentoPeloCodigo(codigo);
+		if (!lancamento.getPessoa().equals(lancamentoEncontrado.getPessoa())) {
+			validarPessoa(lancamento);
+		}
 		BeanUtils.copyProperties(lancamento, lancamentoEncontrado, "codigo");
 		return lancamentoRepository.save(lancamentoEncontrado);
 	}
 
+	
+	public Lancamento cadastrarLancamento(@Valid Lancamento lancamento) {
+		validarPessoa(lancamento);
+		return lancamentoRepository.save(lancamento);
+	}
+	
+	
 	private Lancamento buscarLancamentoPeloCodigo(Long codigo) {
 		Lancamento lancamentoEncontrado = lancamentoRepository.findById(codigo)
 				.orElseThrow(() -> new EmptyResultDataAccessException(1));
 		return lancamentoEncontrado;
 	}
-
-	public Lancamento cadastrarLancamento(@Valid Lancamento lancamento) {
-		Optional<Pessoa> pessoa = pessoaRepository.findById(lancamento.getPessoa().getCodigo());
+	
+	
+	private void validarPessoa(Lancamento lancamento) {
+		Optional<Pessoa> pessoa = null;
+		if(lancamento.getPessoa().getCodigo() != null) {
+			pessoa = pessoaRepository.findById(lancamento.getPessoa().getCodigo());
+		}
+		
 		if (pessoa.isEmpty() || !pessoa.get().getAtivo()) {
 			throw new PessoaInexistenteOuInativaException();
 		}
-		return lancamentoRepository.save(lancamento);
 	}
-	
 	
 }
