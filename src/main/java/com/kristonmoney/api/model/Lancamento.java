@@ -32,12 +32,10 @@ public class Lancamento {
 	private String descricao;
 	
 	@Column (name = "data_vencimento")
-	@JsonFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message = "{mensagem-campo-obrigatorio}")
 	private LocalDate dataVencimento;
 	
 	@Column (name = "data_pagamento")
-	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataPagamento;
 	
 	@NotNull(message = "{mensagem-campo-obrigatorio}")
